@@ -1,0 +1,14 @@
+<div class="d-flex w-100">
+  <button
+    mat-flat-button
+    (click)="authService.login()"
+    *ngIf="!authService.loggedIn"
+    color="primary"
+  >Log in</button>
+  <button
+    mat-flat-button
+    (click)="authService.logout()"
+    *ngIf="authService.loggedIn"
+    color="accent"
+  >Log out</button>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar
+  color="primary"
+>
+  <div class="d-flex justify-content-end">
+    <button
+      mat-flat-button
+      (click)="log(true)"
+      *ngIf="!checkLogin()"
+      color="primary"
+    >Log in</button>
+    <mat-icon>supervised_user_circle</mat-icon>
+    <button
+      mat-flat-button
+      (click)="log(false)"
+      *ngIf="checkLogin()"
+      color="accent"
+    >Log out</button>
+  </div>
+</mat-toolbar>
