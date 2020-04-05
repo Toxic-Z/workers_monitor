@@ -9,8 +9,12 @@ import { PageNotFoundComponent } from "../shared/dummyComponents/page-not-found/
 import { DashboardComponent } from "../smartComponents/dashboard/dashboard.component";
 import { NavigationComponent } from "../shared/dummyComponents/navigation/navigation.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {MatIconModule} from "@angular/material/icon";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatIconModule } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
+import { LoaderComponent } from "../shared/dummyComponents/loader/loader.component";
+import { ProfileComponent } from "../smartComponents/profile/profile.component";
+import { WellcomeComponent } from "../shared/dummyComponents/wellcome/wellcome.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import {MatIconModule} from "@angular/material/icon";
     AuthComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    NavigationComponent
+    NavigationComponent,
+    LoaderComponent,
+    ProfileComponent,
+    WellcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatButtonModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

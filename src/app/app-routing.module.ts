@@ -6,9 +6,11 @@ import { DashboardComponent } from "../smartComponents/dashboard/dashboard.compo
 import { AppComponent } from "./app.component";
 import { AuthGuard } from "../shared/guards/auth.guard";
 import { ProfileComponent } from "../smartComponents/profile/profile.component";
+import {WellcomeComponent} from "../shared/dummyComponents/wellcome/wellcome.component";
 
 
 const routes: Routes = [
+  { path: '', component: WellcomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'authentication', component: AuthComponent },

@@ -1,7 +1,6 @@
 <app-navigation
   class="mb-5"
 ></app-navigation>
-<mat-spinner
-  *ngIf="checkLoader()"
-></mat-spinner>
-<!--<router-outlet></router-outlet>-->
+<router-outlet></router-outlet>
+<app-loader *ngIf="showLoader" class="loader"></app-loader>
+
