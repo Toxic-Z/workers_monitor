@@ -1,0 +1,36 @@
+<div class="w-100 d-flex">
+  <form
+    *ngIf="profileForm"
+    [formGroup]="profileForm"
+    class="d-flex flex-column w-100 justify-content-center px-5 pt-5"
+    (ngSubmit)="submitForm()">
+    <mat-form-field disabled appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        placeholder="E-mail">
+    </mat-form-field>
+    <mat-checkbox
+      formControlName="emailVerified"
+      disabled
+    >E-mail verified</mat-checkbox>
+    <mat-form-field appearance="fill">
+      <mat-label>Your password</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="current_password"
+      >
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="button-primary"
+      disabled
+      type="submit"
+    >Change
+    </button>
+  </form>
+</div>

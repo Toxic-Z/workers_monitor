@@ -15,6 +15,10 @@ import { MatMenuModule } from "@angular/material/menu";
 import { LoaderComponent } from "../shared/dummyComponents/loader/loader.component";
 import { ProfileComponent } from "../smartComponents/profile/profile.component";
 import { WellcomeComponent } from "../shared/dummyComponents/wellcome/wellcome.component";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { WellcomeComponent } from "../shared/dummyComponents/wellcome/wellcome.c
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
