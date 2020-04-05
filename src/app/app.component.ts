@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonService } from "../shared/services/common.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class AppComponent {
   title = 'Monitor';
-  public showLoader: boolean = false;
+  public showLoader: boolean = true;
   constructor(
     private commonService: CommonService
   ) {
@@ -19,11 +18,4 @@ export class AppComponent {
       }
     });
   }
-  // public checkLoader(): boolean {
-  //   this.commonService.checkLoaderState().subscribe((state: boolean) => {
-  //     if (state !== null) {
-  //       this.showLoader = state;
-  //     }
-  //   });
-  // }
 }

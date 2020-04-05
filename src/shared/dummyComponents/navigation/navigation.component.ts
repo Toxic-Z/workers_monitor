@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
-import {Observable} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NavigationComponent implements OnInit {
 

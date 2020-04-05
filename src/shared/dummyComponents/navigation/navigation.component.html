@@ -1,40 +1,52 @@
 <mat-toolbar
   color="primary"
 >
-  <div class="d-flex w-100 justify-content-end">
+  <div class="d-flex w-100 justify-content-between">
+    <div class="d-flex">
+      <button
+        mat-stroked-button
+        [disabled]="checkRoute('dashboard')"
+        class="nav-button mr-5"
+        routerLink="/dashboard"
+      >Dashboard</button>
+      <button
+        mat-stroked-button
+        [disabled]="checkRoute('profile')"
+        class="nav-button ml-5"
+        routerLink="/profile"
+      >Profile</button>
+    </div>
     <button
-      mat-flat-button
+      mat-stroked-button
       (click)="log(true)"
       *ngIf="!checkLogin()"
-      color="primary"
+      class="nav-button ml-5"
+      routerLink="/profile"
     >Log in</button>
-<!--    <button-->
-<!--      mat-flat-button-->
-<!--      (click)="log(false)"-->
-<!--      *ngIf="checkLogin()"-->
-<!--      color="accent"-->
-<!--    >Log out</button>-->
-    <button
+    <div
       *ngIf="checkLogin()"
-      mat-icon-button
-      [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu">
-      <mat-icon>supervised_user_circle</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
+      class="d-flex">
       <button
-        routerLink="/profile"
-        [disabled]="checkRoute('profile')"
-        mat-menu-item>
-        <mat-icon>account_box</mat-icon>
-        <span>Profile</span>
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu">
+        <mat-icon>supervised_user_circle</mat-icon>
       </button>
-      <button
-        (click)="log(false)"
-        mat-menu-item>
-        <mat-icon>highlight_off</mat-icon>
-        <span>Log out</span>
-      </button>
-    </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button
+          routerLink="/profile"
+          [disabled]="checkRoute('profile')"
+          mat-menu-item>
+          <mat-icon>account_box</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button
+          (click)="log(false)"
+          mat-menu-item>
+          <mat-icon>highlight_off</mat-icon>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </div>
   </div>
 </mat-toolbar>

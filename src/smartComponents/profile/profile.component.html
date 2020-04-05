@@ -1,9 +1,10 @@
-<div class="w-100 d-flex">
+<div class="w-100 d-flex flex-column">
   <form
     *ngIf="profileForm"
     [formGroup]="profileForm"
     class="d-flex flex-column w-100 justify-content-center px-5 pt-5"
     (ngSubmit)="submitForm()">
+    <h4 class="mb-3">Your profile information:</h4>
     <mat-form-field disabled appearance="fill">
       <mat-label>E-mail</mat-label>
       <input
@@ -13,8 +14,14 @@
     </mat-form-field>
     <mat-checkbox
       formControlName="emailVerified"
-      disabled
     >E-mail verified</mat-checkbox>
+    <mat-form-field disabled appearance="fill">
+      <mat-label>Nickname</mat-label>
+      <input
+        matInput
+        formControlName="nickname"
+        placeholder="Nickname">
+    </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Your password</mat-label>
       <input

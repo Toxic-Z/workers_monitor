@@ -10,7 +10,9 @@ export class CommonService {
   constructor() {}
 
   public changeLoaderVisibility(state: boolean): void {
-    this.showLoader.next(state);
+    setTimeout(() => {
+      this.showLoader.next(state);
+    },0);
   }
 
   public checkLoaderState(): Observable<boolean> {

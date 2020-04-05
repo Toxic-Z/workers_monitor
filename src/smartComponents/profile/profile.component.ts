@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../shared/services/auth.service";
-import {User} from "../../shared/interfaces/user";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { AuthService } from "../../shared/services/auth.service";
+import { User } from "../../shared/interfaces/user";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { CommonService } from "../../shared/services/common.service";
 
 @Component({
   selector: 'app-profile',
@@ -14,12 +15,15 @@ export class ProfileComponent implements OnInit {
   public user: User;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private commonService: CommonService
   ) {
+    this.commonService.changeLoaderVisibility(true);
     this.authService.userProfile$.subscribe((user: User) => {
       console.log(user)
       this.user = {...user};
       this.initForm();
+      this.commonService.changeLoaderVisibility(false);
     })
   }
 
@@ -28,10 +32,10 @@ export class ProfileComponent implements OnInit {
 
   private initForm(): void {
     this.profileForm = new FormGroup({
-      email: new FormControl(this.user.email, [Validators.required]),
+      email: new FormControl({value: this.user.email, disabled: true}, [Validators.required]),
       profileImage: new FormControl(this.user.picture),
-      emailVerified: new FormControl(this.user.email_verified),
-      nickname: new FormControl(this.user.nickname, [Validators.required]),
+      emailVerified: new FormControl({value: this.user.email_verified, disabled: true}),
+      nickname: new FormControl({value: this.user.nickname, disabled: true}, [Validators.required]),
       current_password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
   }
