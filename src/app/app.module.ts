@@ -16,7 +16,7 @@ import { ProfileComponent } from "../smartComponents/profile/profile.component";
 import { WellcomeComponent } from "../shared/dummyComponents/wellcome/wellcome.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import {HttpClientModule} from "@angular/common/http";
 import {MatListModule} from "@angular/material/list";
@@ -31,22 +31,23 @@ import {MatListModule} from "@angular/material/list";
     ProfileComponent,
     WellcomeComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-        MatMenuModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatCheckboxModule,
-        HttpClientModule,
-        MatListModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    HttpClientModule,
+    MatListModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

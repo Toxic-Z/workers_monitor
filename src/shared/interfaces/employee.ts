@@ -7,7 +7,7 @@ export interface Employee {
     address: EmployeeAddress;
     email: string;
   };
-  addDate: string;
+  addDate: Date;
   salary: number;
   position: string;
   __v?: number;
