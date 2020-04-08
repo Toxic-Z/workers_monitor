@@ -1,7 +1,25 @@
-<div class="w-100 d-flex">
-</div>
+<mat-list
+  class="list w-100 p-4">
+  <div
+    *ngFor="let employee of employeesList">
+    <div mat-subheader>
+      <mat-icon
+        [ngClass]="{
+          iconMale: employee.gender === 'm',
+          iconFemale: employee.gender === 'f'}"
+      >wc</mat-icon>
+      {{employee.name}}</div>
+    <mat-list-item class="w-100">
+      <div class="d-flex w-100">
+        <div class="d-flex flex-column">
+          <span class="value">Position</span>
+          <span class="label">{{employee.position}}</span>
+          <span class="value">Salary</span>
+          <span class="label">{{employee.salary}}</span>
 
-
-<!--<div *ngIf="authService.userProfile$ | async as profile">-->
-<!--  <h5>{{ profile | json }}</h5>-->
-<!--</div>-->
+        </div>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-list>
