@@ -17,7 +17,13 @@ export class ApiService {
 
   public fetchEmployees(): Observable<Employee[]> {
     this.commonService.changeLoaderVisibility(true);
-    const url = environment.apiUrl + 'employees/rr';
+    const url = environment.apiUrl + 'employees';
     return this.httpClient.get<Employee[]>(url);
+  }
+
+  public deleteEmployee(id: string): Observable<boolean> {
+    this.commonService.changeLoaderVisibility(true);
+    const url = environment.apiUrl + 'employees/' + id;
+    return this.httpClient.delete<boolean>(url);
   }
 }

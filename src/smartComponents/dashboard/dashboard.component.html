@@ -21,12 +21,12 @@
     <mat-list-item class="w-100">
       <div class="d-flex w-100 flex-column">
         <div class="d-flex justify-content-between">
-          <div class="d-flex flex-column w-49">
+          <div class="d-flex flex-column w-50">
             <mat-form-field appearance="legacy">
               <mat-label>Position</mat-label>
               <input
                 matInput
-                disabled
+                [disabled]="!checkEditListById(employee._id)"
                 placeholder="City"
                 [(ngModel)]="employee.position"
               >
@@ -35,7 +35,7 @@
               <mat-label>Salary</mat-label>
               <input
                 matInput
-                disabled
+                [disabled]="!checkEditListById(employee._id)"
                 placeholder="Street"
                 [(ngModel)]="employee.salary"
               >
@@ -44,18 +44,18 @@
               <mat-label>E-mail</mat-label>
               <input
                 matInput
-                disabled
+                [disabled]="!checkEditListById(employee._id)"
                 placeholder="Placeholder"
                 [(ngModel)]="employee.contactInfo.email"
               >
             </mat-form-field>
           </div>
-          <div class="d-flex flex-column w-49">
+          <div class="d-flex flex-column w-50">
             <mat-form-field appearance="legacy">
               <mat-label>City</mat-label>
               <input
                 matInput
-                disabled
+                [disabled]="!checkEditListById(employee._id)"
                 placeholder="City"
                 [(ngModel)]="employee.contactInfo.address.city"
               >
@@ -64,26 +64,59 @@
               <mat-label>Street</mat-label>
               <input
                 matInput
-                disabled
+                [disabled]="!checkEditListById(employee._id)"
                 placeholder="Street"
                 [(ngModel)]="employee.contactInfo.address.street"
               >
             </mat-form-field>
-            <mat-form-field appearance="legacy">
-              <mat-label>House number</mat-label>
-              <input
-                matInput
-                disabled
-                placeholder="Placeholder"
-                [(ngModel)]="employee.contactInfo.address.houseN"
-              >
-            </mat-form-field>
+            <div class="d-flex">
+              <mat-form-field
+                class="w-50"
+                appearance="legacy">
+                <mat-label>House number</mat-label>
+                <input
+                  matInput
+                  [disabled]="!checkEditListById(employee._id)"
+                  placeholder="Placeholder"
+                  [(ngModel)]="employee.contactInfo.address.houseN"
+                >
+              </mat-form-field>
+              <mat-form-field
+                class="w-50"
+                appearance="legacy">
+                <mat-label>Additional number</mat-label>
+                <input
+                  matInput
+                  [disabled]="!checkEditListById(employee._id)"
+                  placeholder="Placeholder"
+                  [(ngModel)]="employee.contactInfo.address.addN"
+                >
+              </mat-form-field>
+            </div>
+
           </div>
         </div>
-        <span class="value">Created </span>
-        <span class="label">{{parseDate(employee.addDate)}}</span>
+        <div class="d-flex w-100 justify-content-between">
+          <div class="d-flex flex-column">
+            <span class="value">Created </span>
+            <span class="label mb-2">{{parseDate(employee.addDate)}}</span>
+          </div>
+          <div class="d-flex h-50">
+            <button
+              mat-stroked-button
+              (click)="toAction(employee._id, 'edit')"
+              class="ml-5 mw-200px editbtn mr-3"
+            >{{checkEditListById(employee._id) ? 'Save' : 'Edit'}}</button>
+            <button
+              color="warn"
+              class="mw-200px"
+              (click)="toAction(employee._id, 'delete')"
+              mat-stroked-button
+            >{{checkEditListById(employee._id) ? 'Cancel' : 'Delete'}}</button>
+          </div>
+        </div>
       </div>
     </mat-list-item>
-    <mat-divider></mat-divider>
+    <mat-divider class="mb-2"></mat-divider>
   </div>
 </mat-list>

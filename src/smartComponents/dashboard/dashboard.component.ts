@@ -13,6 +13,7 @@ import {Employee} from '../../shared/interfaces/employee';
 export class DashboardComponent implements OnInit {
 
   public employeesList: Employee[] = [];
+  public editableList: string[] = [];
 
   constructor(
     public authService: AuthService,
@@ -34,5 +35,46 @@ export class DashboardComponent implements OnInit {
 
   public parseDate(date: Date): string {
     return this.commonService.dateToMoment(date);
+  }
+
+  public toEditList(id: string): void {
+    if (!this.editableList.includes(id)) {
+      this.editableList.push(id);
+    }
+  }
+
+  public deleteEmployee(id: string): void {
+    this.apiService.deleteEmployee(id).subscribe((r: boolean) => {
+    });
+  }
+
+  public toAction(id: string, type: string): void {
+    switch (this.editableList.includes(id)) {
+      case true:
+        switch (type) {
+          case 'edit':
+            break;
+          case 'delete':
+            const index = this.editableList.findIndex((i: string) => i === id);
+            this.editableList.splice(index, 1);
+            break;
+        }
+        break;
+      case false:
+        switch (type) {
+          case 'edit':
+            this.toEditList(id);
+            break;
+          case 'delete':
+            this.deleteEmployee(id);
+            break;
+        }
+        break;
+
+    }
+  }
+
+  public checkEditListById(id: string): boolean {
+    return this.editableList.includes(id);
   }
 }

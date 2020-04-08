@@ -1,5 +1,5 @@
 .iconMale {
-  clip-path: inset(0% 50% 0% 0%)
+  clip-path: inset(0% 50% 0% 0%);
 }
 .iconFemale {
   clip-path: inset(0% 0% 0% 50%);
@@ -38,4 +38,7 @@
 }
 .w-49 {
   width: 49%;
+}
+.editbtn {
+  color: rgba(0,0,0,0.54)
 }
