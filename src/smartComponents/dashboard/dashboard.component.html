@@ -1,18 +1,52 @@
 <mat-list
   class="list w-100 p-4">
+  <div class="d-flex w-100 justify-content-between align-items-baseline">
+    <mat-form-field
+      class="w-50"
+      appearance="outline">
+      <mat-label>Search...</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchKeyWord"
+      >
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint>Search by name...</mat-hint>
+    </mat-form-field>
+    <button
+      mat-stroked-button
+      [matTooltipDisabled]="searchKeyWord.length === 0"
+      matTooltip="Clear search field for creating a new employee"
+      [disabled]="isCreating || searchKeyWord.length > 0"
+      (click)="addNewEmployee()"
+      class="mw-200px editbtn h-40-px"
+    >Create new one</button>
+  </div>
   <div
-    *ngFor="let employee of employeesList">
+    *ngFor="let employee of fetchFilteredList()">
     <div
       mat-subheader
       class="d-flex w-100 justify-content-between"
     >
       <div class="d-flex align-items-center w-49">
         <mat-icon
+          class="gender"
+          [matTooltipDisabled]="!checkEditListById(employee._id)"
+          matTooltip="Click to change"
+          (click)="onGenderClick(employee)"
           [ngClass]="{
-          iconMale: employee.gender === 'm',
-          iconFemale: employee.gender === 'f'}"
+            iconMale: employee.gender === 'm',
+            'cursor-pointer': checkEditListById(employee._id),
+            iconFemale: employee.gender === 'f'}"
         >wc</mat-icon>
-        <h6>{{employee.name}}</h6>
+        <mat-form-field appearance="legacy">
+          <mat-label>Full legal name</mat-label>
+          <input
+            matInput
+            [disabled]="!checkEditListById(employee._id)"
+            placeholder="Full legal name"
+            [(ngModel)]="employee.name"
+          >
+        </mat-form-field>
       </div>
       <div class="d-flex w-49">
         <h6>Contact information</h6>
@@ -27,7 +61,7 @@
               <input
                 matInput
                 [disabled]="!checkEditListById(employee._id)"
-                placeholder="City"
+                placeholder="Position"
                 [(ngModel)]="employee.position"
               >
             </mat-form-field>
@@ -36,7 +70,7 @@
               <input
                 matInput
                 [disabled]="!checkEditListById(employee._id)"
-                placeholder="Street"
+                placeholder="Salary"
                 [(ngModel)]="employee.salary"
               >
             </mat-form-field>
@@ -45,7 +79,7 @@
               <input
                 matInput
                 [disabled]="!checkEditListById(employee._id)"
-                placeholder="Placeholder"
+                placeholder="E-mail"
                 [(ngModel)]="employee.contactInfo.email"
               >
             </mat-form-field>
@@ -77,7 +111,7 @@
                 <input
                   matInput
                   [disabled]="!checkEditListById(employee._id)"
-                  placeholder="Placeholder"
+                  placeholder="House number"
                   [(ngModel)]="employee.contactInfo.address.houseN"
                 >
               </mat-form-field>
@@ -88,7 +122,7 @@
                 <input
                   matInput
                   [disabled]="!checkEditListById(employee._id)"
-                  placeholder="Placeholder"
+                  placeholder="Additional number"
                   [(ngModel)]="employee.contactInfo.address.addN"
                 >
               </mat-form-field>
@@ -104,13 +138,13 @@
           <div class="d-flex h-50">
             <button
               mat-stroked-button
-              (click)="toAction(employee._id, 'edit')"
+              (click)="toAction(employee, 'edit')"
               class="ml-5 mw-200px editbtn mr-3"
             >{{checkEditListById(employee._id) ? 'Save' : 'Edit'}}</button>
             <button
               color="warn"
               class="mw-200px"
-              (click)="toAction(employee._id, 'delete')"
+              (click)="toAction(employee, 'delete')"
               mat-stroked-button
             >{{checkEditListById(employee._id) ? 'Cancel' : 'Delete'}}</button>
           </div>
