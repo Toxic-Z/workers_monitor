@@ -169,10 +169,10 @@ export class DashboardComponent implements OnInit {
     };
     this.editableList.push(this.newItemsIdIndex.toString());
     this.isCreating = true;
-    this.employeesList.unshift(newEmployee);
+    this.employeesList.unshift({...newEmployee});
     this.employeeForms.push(
       {
-        form: this.initForm(newEmployee),
+        form: this.initForm({...newEmployee}),
         id: newEmployee._id
       }
     );
@@ -240,6 +240,7 @@ export class DashboardComponent implements OnInit {
               this.apiService.createEmployee(value).subscribe((e: boolean) => {
                 if (e) {
                   this.updateEmployeesList();
+                  this.newItemsIdIndex ++;
                   this.isCreating = false;
                   const ind = this.employeeForms.findIndex((i: {form: FormGroup, id: string}) => i.id === employee._id);
                   for (const control in this.employeeForms[ind].form.controls) {
