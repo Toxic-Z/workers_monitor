@@ -7,7 +7,7 @@
       <mat-label>Search...</mat-label>
       <input
         matInput
-        [disabled]="isCreating"
+        [disabled]="isCreating || !employeesList.length"
         [(ngModel)]="searchKeyWord"
       >
       <mat-icon matSuffix>search</mat-icon>
@@ -15,8 +15,6 @@
     </mat-form-field>
     <button
       mat-stroked-button
-      [matTooltipDisabled]="searchKeyWord.length === 0"
-      matTooltip="Clear search field for creating a new employee"
       [disabled]="isCreating || searchKeyWord.length > 0"
       (click)="addNewEmployee()"
       class="mw-200px editbtn h-40-px"
