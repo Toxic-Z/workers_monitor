@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../shared/services/auth.service";
-import { User } from "../../shared/interfaces/user";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { CommonService } from "../../shared/services/common.service";
+import { AuthService } from '../../shared/services/auth.service';
+import { User } from '../../shared/interfaces/user';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonService } from '../../shared/services/common.service';
 
 @Component({
   selector: 'app-profile',
