@@ -7,3 +7,8 @@ REQUIREMENTS:
 4. Execute "npm run start" in the root directory of this application.
 5. Execute "node app.js" in the root directory of back-end application.
 6. Enjoy my work, please :) 
+Incoming features:
+- paggination
+- validation of form
+- editable user profile page
+- transfering authorization from remote service to Node
