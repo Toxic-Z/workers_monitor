@@ -20,11 +20,10 @@ export class ProfileComponent implements OnInit {
   ) {
     this.commonService.changeLoaderVisibility(true);
     this.authService.userProfile$.subscribe((user: User) => {
-      console.log(user)
       this.user = {...user};
       this.initForm();
       this.commonService.changeLoaderVisibility(false);
-    })
+    });
   }
 
   ngOnInit(): void {
