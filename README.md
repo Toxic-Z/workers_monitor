@@ -4,12 +4,11 @@ REQUIREMENTS:
 1. You should have active MongoDB on port 27017.
 2. Execute "npm i" in this folder.
 3. Execute "npm i" in back-end folder.
-4. Execute "npm run start" in the root directory of this application.
+4. Execute "npm run start" in the root directory of this application(application should be runned on port :4200).
 5. Execute "node app.js" in the root directory of back-end application.
 6. Enjoy my work, please :) 
 
 Incoming features:
 - paggination
-- validation of form
 - editable user profile page
 - transfering authorization from remote service to Node
